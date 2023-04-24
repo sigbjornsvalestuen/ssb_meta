@@ -57,9 +57,6 @@ See examples provided by "example _query.R".
 * Disclaimer
 All source tables from Statistics Norway are licenced under the Creative Commons Attribution 4.0 International (CC BY 4.0) (https://www.ssb.no/en/diverse/lisens). Be sure to give appropriate credit to Statistics Norway when using data from their source tables. 
 
-** Ethical consideration
-This dataset was based on scraped information from a large amount of webpages hosted by Statistics Norway. 
-
-Always be mindful when scraping data! Set timers between iterations, make sure not to overload the host server, and pay attention to host policies. If you can, use the existing API provided by Statistics Norway. 
+This dataset was based on scraped information from a large amount of webpages hosted by Statistics Norway. Always be mindful when scraping data! Set timers between iterations, make sure not to overload the host server, and pay attention to host policies. If you can, use the existing API provided by Statistics Norway. 
 
 DO NOT SCRAPE unless you know what you are doing and want to contribute to this project!
