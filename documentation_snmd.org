@@ -1,0 +1,23 @@
+#+TITLE: Statistics Norway Metadatabase
+#+AUTHOR: Sigbjørn Svalestuen, NORCE
+
+* Description
+This dataset contains metadata on all unique data tables hosted by Statistics Norway at https://www.ssb.no/statbank. Additionally, I have generated a set of logical and factorized indicators that aid in parsing this metadata, such as the temporal and spatial resolution at which the tables variables provide information, as well as whether or not the time-series is ongoing or closed. I have further provided URLS to all unique table pages, as well as the string required to query the official Statistics Norway API-service. 
+
+* Why?    
+The graphical interface on the host website poses some unique challenges when scanning for data; firstly, it contains 640 categories of official statistics that link to a subset of webpages marked by a suffix after the main URL. This means that the links within each main category may or may not refer to unique datasources. In other words, when casting a wide net when searching in the database, one is sure to encounter a great many duplicate categories and tables! This is inefficent when "fishing" for data sources. Second, fishing for data in this way is inefficient because one must manually copy-paste the information every time one finds a relevant source table. Parsing the metadata using ones preferred coding language will help in identifying relevant, open data tables for ones project, as provided by Statistics Norway. Third, since the metadatabase contains urls for both the table in question and the API-query link, it is straightforward to a) open the URL to inspect the table and b) query the database and collect statistics using the public API service. 
+
+* How?
+I first scraped all 640 hyperlinks from all subcategories at https://www.ssb.no/statbank. Because of its consistent link and HTML-table structuring, it was somewhat straightforward to refer to table elements from all 640 hyperlinks. I scraped three pieces of information; table numbers, table titles, and table time coverage. As stated above, the database contains many, many duplicates because you can approach many tables from many subcategories. Identifying and removing duplicates and redundant information from the scraping process yields a total of 7527 source tables; many of which have a great number of variables within them. This ensures that all tables in the metadataset are unique. 
+
+The titles are particularly useful because they contain quite a bit of information useful to researchers; most notably, consistent notation of the level of spatial resolution in the source table. These are noted by (K), (F), (G), (B), and (T), referring to municipality, county, basic statistical unit, district, and urban area respectively. Their existence in a string was queried with strict regular expressions and used to generate logical values. Similarly, the period indicator includes M and K to refer to monthly and quarterly reported statistics. Temporal resolution is available in the tunit indicator. 
+
+* How to use
+Import the data as any other .csv-file into your preferred statistical computing environment (R, Python etc.). All tables have a five-digit identifier. If the real table number is to be used, make sure that your program does not automatically convert the column from character to integer; some tables contain leading zeros that are removed when converted to integer. 
+
+Use regular expressions to identify full or partial strings in the titles of each table (NB!: make sure your regexp code ignores case-sensitivity if necessary). Use either spares indicator or the logical indicators (komm, gkrets, fylke, tett) to identify the level of analysis for which the table contains data. Use the logical "closed" to select ongoing or closed tables. 
+
+Use the information provided by "urls" to find the table url, or "api" to refer to the API-query. Query the API using the PxWebApiData package provided in R. 
+
+See examples provided by "example _query.R".
+
