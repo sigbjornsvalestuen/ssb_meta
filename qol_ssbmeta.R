@@ -1,12 +1,14 @@
 #### Quality of life features for ssbmetaclean.csv; end result: more detailed .csv-file called snmb.csv
 library(stringr)
 
-snmd <- read.csv("ssbmetaclean.csv", colClasses = c("table" = "character"))
+snmd <- read.csv("../datamapping/ssbmetaclean.csv", colClasses = c("table" = "character"))
 str(snmd)
 head(snmd)
+snmd <- snmd[!duplicated(snmd$table),]
+
+str(test)
 
 ### Add spatial resolution defined by title, lowest level by table
-
 snmd$komm <- str_detect(snmd$title, "\\(K\\)") ## Municipality data
 snmd$fylke <- str_detect(snmd$title, "\\(F\\)") ## County
 snmd$gkrets <- str_detect(snmd$title, "\\(G\\)") ## Basic statistical unit

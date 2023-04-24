@@ -36,7 +36,7 @@ optlist <- pblapply(urls, function(i){
 
 str(optlist)
 
-#save(optlist, file = "optlist.Rdata") ### SAVE TO AVOID RE-QUERY
+save(optlist, file = "optlist.Rdata") ### SAVE TO AVOID RE-QUERY
 
 nlist <- pblapply(urls, function(i){
     Sys.sleep(3) ## Sys.sleep (3s)
@@ -46,7 +46,7 @@ nlist <- pblapply(urls, function(i){
 })
 
 str(nlist)
-#save(nlist, file = "nlist.Rdata") ### SAVE TO AVOID RE-QUERY
+save(nlist, file = "nlist.Rdata") ### SAVE TO AVOID RE-QUERY
 
 ### Load objects
 #load("nlist.Rdata")
