@@ -5,6 +5,7 @@ library(pbapply)
 link <- "https://www.ssb.no/statbank/table/13371/"
 ssb_page <- read_html(link)
 
+browseURL(link)
 str(ssb_page)
 
 ### Option contains all source table options
@@ -16,7 +17,6 @@ html_text(tab[1:3])
 vars <- ssb_page %>%
     html_elements(css = ".variableselector_valuesselect_statistics")
 html_text(vars[4]) ### Nth variable occupies the 4th spot
-
 
 
 ### Get the data from snmd
@@ -48,7 +48,6 @@ nlist <- pblapply(urls, function(i){
 str(nlist)
 #save(nlist, file = "nlist.Rdata") ### SAVE TO AVOID RE-QUERY
 
-
 ### Load objects
 #load("nlist.Rdata")
 #load("optlist.Rdata")
@@ -57,6 +56,7 @@ str(nlist)
 lths <- lapply(nlist, '[[', 4) ### Get the lengths of variable index
 lths <- lapply(lths, as.integer) ### Make integer 
 lths <- lapply(lths, seq) ### Create sequence 1:N
+lths
 
 ### Map the lists so that elements equal to lths is selected from optlist
 vars <- mapply('[', optlist, lths)
