@@ -4,6 +4,20 @@
 * Description
 This dataset contains metadata on all unique data tables hosted by Statistics Norway at https://www.ssb.no/statbank. Additionally, I have generated a set of logical and factorized indicators that aid in parsing this metadata, such as the temporal and spatial resolution at which the tables variables provide information, as well as whether or not the time-series is ongoing or closed. I have further provided URLS to all unique table pages, as well as the string required to query the official Statistics Norway API-service. 
 
+** snmd.csv
+The metadatabase. 
+
+** example_query.R 
+Usage examples.
+
+** qol_ssbmeta.R 
+Code for adding indicators on spatial and temporal resolution, closed/open series etc, and api-links.
+
+** .Rdata
+Source-files resulting from scrape.R. The building blocks of snmd.csv.
+
+** 
+
 * Why?    
 The graphical interface on the host website poses some unique challenges when scanning for data; firstly, it contains 640 categories of official statistics that link to a subset of webpages marked by a suffix after the main URL. This means that the links within each main category may or may not refer to unique datasources. In other words, when casting a wide net when searching in the database, one is sure to encounter a great many duplicate categories and tables! This is inefficent when "fishing" for data sources. Second, fishing for data in this way is inefficient because one must manually copy-paste the information every time one finds a relevant source table. Parsing the metadata using ones preferred coding language will help in identifying relevant, open data tables for ones project, as provided by Statistics Norway. Third, since the metadatabase contains urls for both the table in question and the API-query link, it is straightforward to a) open the URL to inspect the table and b) query the database and collect statistics using the public API service. 
 
