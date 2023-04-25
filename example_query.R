@@ -59,5 +59,9 @@ str(khealth)
 konhealth <- khealth[khealth$closed == FALSE,]
 str(konhealth)
 konhealth$title
-konhealth[,1:4]
-str(snmd)
+konhealth[1:2,1:4]
+str(konhealth)
+
+### Get metadata from selected tables
+vars <- lapply(konhealth[1:2 ,c("api")], ApiData, returnMetaData = TRUE)
+str(vars)
