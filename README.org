@@ -50,7 +50,7 @@ Import the data as any other .csv-file into your preferred statistical computing
 
 Use regular expressions to identify full or partial strings in the titles of each table (NB!: make sure your regexp code ignores case-sensitivity if necessary). Use either spares indicator or the logical indicators (komm, gkrets, fylke, tett) to identify the level of analysis for which the table contains data. Be aware that some source-tables include data on several levels of spatial resolution. =spares= includes only the lowest level, so the logicals will provide matches where data are available on multiple levels of spatial resolution. Use the logical "closed" to select ongoing or closed tables. 
 
-Use the information provided by "urls" to find the table url, or "api" to refer to the API-query. Query the API using the PxWebApiData package provided in R. 
+Use the information provided by "urls" to find the table url, or "api" to refer to the API-query. Query the API using the PxWebApiData (https://cran.r-project.org/web/packages/PxWebApiData/index.html) package provided in R. For example usage, see https://cran.r-project.org/web/packages/PxWebApiData/vignettes/Introduction.html.
 
 See examples provided by "example _query.R".
 
