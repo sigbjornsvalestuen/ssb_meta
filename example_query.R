@@ -63,5 +63,7 @@ konhealth[1:2,1:4]
 str(konhealth)
 
 ### Get metadata from selected tables
-vars <- lapply(konhealth[1:2 ,c("api")], ApiData, returnMetaData = TRUE)
+vars <- lapply(konhealth[1:2 ,c("api")], ApiData, returnMetaData = TRUE) ### Metadata 
+mfs <- lapply(konhealth[1:2, c("api")], ApiData, returnMetaFrames = TRUE) ### Metadata as dataframes
 str(vars)
+str(mfs)
